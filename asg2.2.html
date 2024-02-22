@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Data Display</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Local Storage Data</h1>
+        <div id="dataContainer"></div>
+    </div>
+
+    <!-- Bootstrap JS (optional if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to display data from local storage
+        function displayDataFromLocalStorage() {
+            var dataContainer = document.getElementById('dataContainer');
+            dataContainer.innerHTML = ''; // Clear previous content
+
+            // Get data from local storage
+            var data = JSON.parse(localStorage.getItem('data'));
+
+            let name = data.name;
+            let mobileNumber = data.mobileNumber;
+            let email = data.email;
+            
+
+            if (name || email || mobileNumber ) {
+                // Create Bootstrap card to display data
+                var card = document.createElement('div');
+                card.className = 'card';
+
+                var cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                cardBody.innerHTML = '<h5 class="card-title">User Information</h5>' +
+                                     '<p class="card-text"><strong>Name:</strong> ' + (name || '-') + '</p>' +
+                                     '<p class="card-text"><strong>Email:</strong> ' + (email || '-') + '</p>' +
+                                     '<p class="card-text"><strong>Mobile Number:</strong> ' + (mobileNumber || '-') + '</p>' 
+
+                card.appendChild(cardBody);
+                dataContainer.appendChild(card);
+            } else {
+                // No data found in local storage
+                dataContainer.innerHTML = '<p>No data found in local storage.</p>';
+            }
+        }
+
+        // Display data on page load
+        window.addEventListener('load', function() {
+            displayDataFromLocalStorage();
+        });
+    </script>
+</body>
+</html>
