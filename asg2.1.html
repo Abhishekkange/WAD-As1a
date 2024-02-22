@@ -24,14 +24,66 @@
                     <label for="mobileNumber" class="form-label">Mobile Number</label>
                     <input id="mobileNumber" type="tel" class="form-control">
                 </div>
-                <div class="mb-3">
-                    <label for="gender" class="form-label">Gender</label>
-                    <select id="gender" class="form-select">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
+
+                <div style="margin: 30px;">
+
+                    <label>
+                        <input style="margin: 10px;" type="radio" name="gender" value="male">
+                        Male
+                    </label>
+                
+                    <label>
+                        <input style="margin: 10px;" type="radio" name="gender" value="female">
+                        Female
+                    </label>
+                
+                    <!-- You can add more options if needed -->
+                
+                    <br>
+
+                    <div style="margin: 10px;" class="college">
+                        <div class="form-group">
+                            <label for="collegeSelect">Select a College:</label>
+                            <select style="margin: 10px;" class="form-control" id="collegeSelect" name="college">
+                                <option value="">Select...</option>
+                                <option value="1">Harvard University</option>
+                                <option value="2">SPPU</option>
+                                <option value="3">Massachusetts Institute of Technology (MIT)</option>
+                                <option value="4">PVG COET (bhangar)</option>
+                                <option value="5">University of Cambridge</option>
+                                <!-- Add more colleges as needed -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="margin: 15px;" class="subjects">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="mathsCheckbox" value="maths">
+                                <label class="form-check-label" for="mathsCheckbox">
+                                    Maths
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="physicsCheckbox" value="physics">
+                                <label class="form-check-label" for="physicsCheckbox">
+                                    Physics
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="chemistryCheckbox" value="chemistry">
+                                <label class="form-check-label" for="chemistryCheckbox">
+                                    Chemistry
+                                </label>
+                            </div>
+                            <!-- Add more checkboxes for other subjects as needed -->
+                        </div>
+                    </div>
+    
+
                 </div>
+                
+
                 <button id="submit-btn" type="button" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -48,6 +100,8 @@
     const name = document.getElementById('name');
     const mobileNumber = document.getElementById('mobileNumber');
     const email = document.getElementById('email');
+   
+    
     
     const button = document.getElementById('submit-btn');
 
