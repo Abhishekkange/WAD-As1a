@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .registration-details {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .registration-details h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .details-list {
+      list-style: none;
+      padding: 0;
+    }
+    .details-list li {
+      margin-bottom: 10px;
+    }
+    .icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="registration-details">
+          <h1>Registration Details</h1>
+          <ul class="details-list" id="detailsList"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to display form data from local storage
+    document.addEventListener("DOMContentLoaded", function() {
+      const formData = JSON.parse(localStorage.getItem("data"));
+      const detailsList = document.getElementById("detailsList");
+      for (const [key, value] of Object.entries(formData)) {
+        const listItem = document.createElement("li");
+        if (key === "gender") {
+          listItem.innerHTML = `<strong>${key}:</strong> ${value === "male" ? "Male" : "Female"}`;
+        } else if (key === "subjects") {
+          listItem.innerHTML = `<strong>${key}:</strong>`;
+          const subjectsList = document.createElement("ul");
+          subjectsList.classList.add("list-unstyled");
+          for (const subject of value) {
+            const subjectItem = document.createElement("li");
+            subjectItem.innerHTML = `${subject}`;
+            subjectsList.appendChild(subjectItem);
+          }
+          listItem.appendChild(subjectsList);
+        } else {
+          listItem.innerHTML = `<strong>${key}:</strong> ${value}`;
+        }
+        detailsList.appendChild(listItem);
+      }
+    });
+
+    function getSubjectIcon(subject) {
+      // Add logic to return the icon URL based on the subject
+      // For example:
+      if (subject === "DSA") {
+        return "dsa-icon.png";
+      } else if (subject === "WAD") {
+        return "wad-icon.png";
+      } else if (subject === "DSBDA") {
+        return "dsbda-icon.png";
+      } else if (subject === "Cloud Computing") {
+        return "cloud-computing-icon.png";
+      } else {
+        return ""; // Add default icon URL if subject doesn't match
+      }
+    }
+  </script>
+</body>
+</html>
